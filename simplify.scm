@@ -11,14 +11,22 @@
       ;Note if these vars are only used once we can remove from "let" also
       ;I think we can return false or the operand from "op-not-atom" and avoid a second test.
       )
-      (state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp)
+      (state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp);TODO REMOVE
       (cond ((and (not op1sExOp) (not op2sExOp))
                 (cond((and (number? op1s) (number? op2s))
-                        ;(display oprate)
-                        ;(display op2s)
+                        (display oprate);TODO REMOVE
+                        (display "_");TODO REMOVE
+                        (display op2s);TODO REMOVE
+                        (display "\n");TODO REMOVE
                         (if (sum? oprate) (+ op1s op2s) (* op1s op2s))
                     )
-                    (else (list oprate op1s op2s))
+                    ((and (not (number? op1s)) (not (number? op2s))) ;(op var var) => return as is
+                        (list oprate op1s op2s)
+                    )
+                    ( (number? op2s) ;(op var constant) => swap operands
+                        (list oprate op2s op1s)
+                    )
+                    (else (list oprate op1s op2s)) ;(op constat var) => return as is
                     )
                   )
 
