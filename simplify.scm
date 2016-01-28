@@ -43,14 +43,6 @@
   )
 )
 
-(define (run) (simplify '(+ 1 v)))
-
-(define (run2) (simplify '(+ (+ 2 v) (+ 1 3) )))
-
-(define (test1) (simplify '1))
-
-(define (test) simplify '(+ 1 3))
-
 ;after first running (load "simplify.scm") calling this reloads
 (define (loadf)
 	(begin
@@ -59,4 +51,5 @@
 		(load "op-not-atom.scm")
 		(load "opr-is-mul.scm")
     (load "opr-is-plus.scm")
+    (load "test.scm")
 ))
