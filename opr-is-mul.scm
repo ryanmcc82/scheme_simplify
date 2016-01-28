@@ -1,4 +1,6 @@
 (define (opr-is-mul x)
-  ;TODO
-  #t
+	(if (or (eq? x * )(eq? x '*)) #t #f)
+
 )
+
+(opr-is-mul (car '(+ 3 5)))
