@@ -3,7 +3,7 @@
 
 (define (simplify x)
   (
-    if (atom? x) x ;
+    if (atom? x) x
     ;else
     (let* ((oprate (car x)) (op1s (simplify(cadr x ))) (op2s (simplify(cadr (cdr x))))
       (op1sExOp (op-not-atom op1s)) (op2sExOp (op-not-atom op2s)) (oprIsMul (opr-is-mul oprate))
@@ -11,11 +11,13 @@
       ;Note if these vars are only used once we can remove from "let" also
       ;I think we can return false or the operand from "op-not-atom" and avoid a second test.
       )
-      ;(state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp)
+      (state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp)
       (cond ((and (not op1sExOp) (not op2sExOp))
                 (cond((and (number? op1s) (number? op2s))
                         (display oprate)
                         (display op2s)
+                        (environment-define env '* *)
+                        (environment-define env '+ +)
                         (environment-define env 'ex oprate)
                         (environment-define env 'a op1s)
                         (environment-define env 'b op2s)
