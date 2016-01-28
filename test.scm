@@ -3,12 +3,15 @@
     (display "test1: ")
     (display (test1) )
 
+    (newline)
     (display "test2: ")
     (display (test2) )
 
+    (newline)
     (display "test3: ")
     (display (test3) )
 
+    (newline)
     (display "test4: ")
     (display (test4) )
 ))

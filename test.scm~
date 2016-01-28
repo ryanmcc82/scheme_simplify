@@ -1,11 +1,15 @@
 (define (test)
   (begin
+    (display "test1: ")
     (display (test1) )
 
+    (display "test2: ")
     (display (test2) )
 
+    (display "test3: ")
     (display (test3) )
 
+    (display "test4: ")
     (display (test4) )
 ))
 
