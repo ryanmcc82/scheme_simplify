@@ -9,10 +9,10 @@
     (display (test4) )
 ))
 
-(define (test1) (simplify '(+ 1 v)))
+(define (test1) (simplify '1))
 
-(define (test2) (simplify '(+ (+ 2 v) (+ 1 3) )))
+(define (test2) simplify '(+ 1 3))
 
-(define (test3) (simplify '1))
+(define (test3) (simplify '(+ 1 v)))
 
-(define (test4) simplify '(+ 1 3))
+(define (test4) (simplify '(+ (+ 2 v) (+ 1 3) )))
