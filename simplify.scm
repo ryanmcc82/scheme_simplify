@@ -18,7 +18,7 @@
                         (display "_");TODO REMOVE
                         (display op2s);TODO REMOVE
                         (display "\n");TODO REMOVE
-                        (if (sum? oprate) (+ op1s op2s) (* op1s op2s))
+                        (if (sum? oprate) (+ op1s op2s) (* op1s op2s));TODO forgot minus
                     )
                     ((and (not (number? op1s)) (not (number? op2s))) ;(op var var) => return as is
                         (list oprate op1s op2s)

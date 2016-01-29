@@ -18,6 +18,10 @@
     (newline)
     (display "test5: (simplify '(+ (+ v 2) (+ 1 3) ))\n")
     (display (test5) )
+
+    (newline)
+    (display "test6: (simplify '(* (* v 2) (* 1 3) ))\n")
+    (display (test6) )
 ))
 
 (define (test1) (simplify '1))
