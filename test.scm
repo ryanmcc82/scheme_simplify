@@ -22,6 +22,10 @@
     (newline)
     (display "test6: (simplify '(* (* v 2) (* 1 3) ))\n")
     (display (test6) )
+
+        (newline)
+        (display "test7: (simplify '(* (- v 2) (- 1 3) ))\n")
+        (display (test7) )
 ))
 
 (define (test1) (simplify '1))
@@ -35,3 +39,5 @@
 (define (test5) (simplify '(+ (+ v 2) (+ 1 3) )))
 
 (define (test6) (simplify '(* (* v 2) (* 1 3) )))
+
+(define (test7) (simplify '(* (- v 2) (- 1 3) )))
