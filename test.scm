@@ -24,8 +24,10 @@
 
 (define (test2) (simplify '(+ 1 3)))
 
-(define (test3) ( let (v 3) (simplify '(+ 1 v))))
+(define (test3) (simplify '(+ 1 v)))
 
 (define (test4) (simplify '(+ (+ 2 v) (+ 1 3) )))
 
 (define (test5) (simplify '(+ (+ v 2) (+ 1 3) )))
+
+(define (test6) (simplify '(* (* v 2) (* 1 3) )))
