@@ -56,10 +56,10 @@
 ;after first running (load "simplify.scm") calling this reloads
 (define (loadf)
 	(begin
-    (load "simplify.scm")
-		(load "atom?.scm")
-		(load "op-not-atom.scm")
-		(load "opr-is-mul.scm")
-    (load "opr-is-plus.scm")
-    (load "test.scm")
+	(load "simplify.scm")
+	(load "atom?.scm")
+	(load "op-not-atom.scm")
+	(load "opr-is-mul.scm")
+	(load "opr-is-plus.scm")
+	(load "test.scm")
 ))
