@@ -39,6 +39,7 @@
 (define (sum? x)
   (eq?  x '+))
 
+
 (define (state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp)
   (begin
       (display "\t\t")
