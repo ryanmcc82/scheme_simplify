@@ -82,10 +82,19 @@
 (define (result7) '(- (- v 2) (- 2 3) ))
 (define (ptest7) (if (equal? (test7) (result7)) (display "Test7: Passed\n") (display "Test7: Failed\n")))
 
-(define (test7) (simplify '(* (- v 2) (- 1 3) )))
+(define (test7a) (simplify '(* (- v 2) (- 1 3) )))
+(define (result7a) '(* (- v 2) (- 1 3) ))
+(define (ptest7a) (if (equal? (test7a) (result7a)) (display "Test7a: Passed\n") (display "Test7a: Failed\n")))
 
 
-(define (test7) (simplify '(+ t1 ( + t2 t3))))
+(define (result7b) '(- (- v 2) (- 2 3) ))
+(define (result7b) '(- (- v 2) (- 2 3) ))
+(define (ptest7b) (if (equal? (test7b) (result7b)) (display "Test7b: Passed\n") (display "Test7b: Failed\n")))
+
+(define (test7c) (simplify '(+ t1 (+ t2 t3))))
+(define (result7c) '(+ t1 (+ t2 t3) ))
+(define (ptest7c) (if (equal? (test7c) (result7c)) (display "Test7c: Passed\n") (display "Test7c: Failed\n")))
+
 
 (define (test8) (simplify '(* t1 ( * t2 t3))))
 
