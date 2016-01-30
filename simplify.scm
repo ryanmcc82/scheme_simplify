@@ -39,15 +39,14 @@
 (define (sum? x)
   (eq?  x '+))
 
-<<<<<<< HEAD
-=======
+
 (define (mul? x)
   (eq?  x '*))
 
 (define (simplify_minus ex) (if (eq? (car ex) '-) (list '+ (negate (cadr ex)) (cadr (cdr ex))) ex))
 
 (define (negate x)(* -1 x))
->>>>>>> 17d43ee4cd09815f443e6817e95c34f6e37b8d18
+
 
 (define (state-print oprate op1s op2s oprIsMul op1sExOp op2sExOp)
   (begin
