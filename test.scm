@@ -8,7 +8,7 @@
     (display (test1) )
 
     (newline)
-    (display "test2: (simplify '(+ 1 v))\n")
+    (display "test2: (simplify '(+ v 1))\n")
     (display (test2) )
 
     (newline)
@@ -44,6 +44,10 @@
 (define (test2) (simplify '(+ v 1)))
 (define (result2) '(+ 1 v))
 (define (ptest2) (if (equal? (test2) (result2)) (display "Test2: Passed\n") (display "Test2: Failed\n")))
+
+(define (test3) (simplify '(* 4 2)))
+(define (result3) 8)
+(define (ptest3) (if (equal? (test3) (result3)) (display "Test3: Passed\n") (display "Test3: Failed\n")))
 
 (define (test4) (simplify '(+ (+ 2 v) (+ 1 3) )))
 
