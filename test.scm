@@ -62,21 +62,20 @@
 (define (ptest4) (if (equal? (test4) (result4)) (display "Test4: Passed\n") (display "Test4: Failed\n")))
 
 (define (test5) (simplify '(+ (+ v 2) (+ 1 3) )))
-(define (result5) '(+ (+ v 2) (+ 1 3) ))
+(define (result5) '(+ (+ 2 v) (+ 1 3) ))
 (define (ptest5) (if (equal? (test5) (result5)) (display "Test5: Passed\n") (display "Test5: Failed\n")))
 
 (define (test5a) (simplify '(* (- v 2) (- 1 3) )))
-(define (result5a) '(* (- v 2) (- 1 3) ))
+(define (result5a) '(* (+ -2 v) (- 1 3) ))
 (define (ptest5a) (if (equal? (test5a) (result5a)) (display "Test5a: Passed\n") (display "Test5a: Failed\n")))
 
 (define (test6) (simplify '(* (* v 2) (* 2 3) )))
-(define (result6) '(* (* v 2) (* 2 3) ))
+(define (result6) '(* (* 2 v) (* 2 3) ))
 (define (ptest6) (if (equal? (test6) (result6)) (display "Test6: Passed\n") (display "Test6: Failed\n")))
 
 (define (test6a) (simplify '(* (* v 2) (* 1 3) )))
-(define (result6a) '(* (* v 2) (* 1 3) ))
+(define (result6a) '(* (* 2 v) (* 1 3) ))
 (define (ptest6a) (if (equal? (test6a) (result6a)) (display "Test6a: Passed\n") (display "Test6a: Failed\n")))
-
 
 (define (test7) (simplify '(- (- v 2) (- 2 3) )))
 (define (result7) '(- (- v 2) (- 2 3) ))

@@ -54,6 +54,7 @@
     (display (list operator op1s op2s))
     (newline)
     (display (string-append "\t\t" "vars: oprIsMul:" (write-to-string oprIsMul)
+	
       " op1sExOp:" (write-to-string op1sExOp)
       " op2sExOp: " (write-to-string op2sExOp) ))
       (newline)
