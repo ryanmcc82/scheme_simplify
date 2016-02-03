@@ -57,6 +57,19 @@
     (ptest7a)
     (ptest8)
     (ptest8a)
+    (ptest9)
+    (ptest10)
+    (ptest11)
+    (ptest11a)
+    (ptest12)
+    (ptest13)
+    (ptest14)
+    (ptest15)
+    (ptest16)
+    (ptest17)
+    (ptest18)
+    (ptest19)
+    (ptest20)
     ))
 
 ;NOTE:TEST NEED TO LINE UP WITH RULES SO WE CAN CHECK OUR REFERENCE
@@ -126,20 +139,18 @@
 (define (ptest8a) (if (equal? (test8a) (result8a)) (display "Test8a: Passed\n") (display "Test8a: Failed\n")))
 
 
-
-
 (define (test9) (simplify '(+ ( + 1 t) 2))) ;=>(+ (+  1  2 ) t)
-(define (result9) '(+ (+  1  2 ) t)
+(define (result9) '(+ (+  1  2 ) t))
 (define (ptest9) (if (equal? (test9) (result9)) (display "Test9: Passed\n") (display "Test9: Failed\n")))
 
 
-(define (test10) (simplify '(* ( * 1 t) 2))) ;=> (∗ (∗  1  2 ) t)
-(define (result10) '(* (*  1  2 ) t)
+(define (test10) (simplify '(* ( * 1 t) 2))) ;=> (* (*  1  2 ) t)
+(define (result10) '(* (*  1  2 ) t))
 (define (ptest10) (if (equal? (test10) (result10)) (display "Test10: Passed\n") (display "Test10: Failed\n")))
 
 
 (define (test11) (simplify '(* ( + 1 t) 2)))
-(define (result11) '(+ (* 1 2) t)))
+(define (result11) '(+ (* 1 2) t))
 (define (ptest11) (if (equal? (test11) (result11)) (display "Test11: Passed\n") (display "Test11: Failed\n")))
 
 
@@ -149,37 +160,37 @@
 
 
 (define (test12) (simplify '(* 1 (+ 2 t))))
-(define (result12) '(+ (* 1 2) (* 1 t))
+(define (result12) '(+ (* 1 2) (* 1 t)))
 (define (ptest12) (if (equal? (test12) (result12)) (display "Test12: Passed\n") (display "Test12: Failed\n")))
 
 (define (test13) (simplify '(* (+ t1 t2 ) 2)))
-(define (result13) '(+ (* 2 t1 ) (* 2 t2))
-(define (ptest13) (if (equal? (test13) (result13) (display "Test13: Passed\n") (display "Test13: Failed\n")))
+(define (result13) '(+ (* 2 t1 ) (* 2 t2)))
+(define (ptest13) (if (equal? (test13) (result13)) (display "Test13: Passed\n") (display "Test13: Failed\n")))
 
-(define (test14) (simplify '(* 2 (+ t1 t2 ))
-(define (result14) '(+ (* 2 t1 ) (* 2 t2))
-(define (ptest14) (if (equal? (test14) (result14) (display "Test14: Passed\n") (display "Test14: Failed\n")))
+(define (test14) (simplify '(* 2 (+ t1 t2 ))))
+(define (result14) '(+ (* 2 t1 ) (* 2 t2)))
+(define (ptest14) (if (equal? (test14) (result14)) (display "Test14: Passed\n") (display "Test14: Failed\n")))
 
-(define (test15) (simplify '(* (- t1 t2 ) 2)
-(define (result15) '(- (* 2 t1 ) (* 2 t2))
-(define (ptest15) (if (equal? (test15) (result15) (display "Test15: Passed\n") (display "Test15: Failed\n")))
+(define (test15) (simplify '(* (- t1 t2 ) 2)))
+(define (result15) '(- (* 2 t1 ) (* 2 t2)))
+(define (ptest15) (if (equal? (test15) (result15)) (display "Test15: Passed\n") (display "Test15: Failed\n")))
 
-(define (test16) (simplify '(* 2 (- t1 t2 ))
-(define (result16) '(- (* 2 t1 ) (* 2 t2))
-(define (ptest16) (if (equal? (test16) (result16) (display "Test16: Passed\n") (display "Test16: Failed\n")))
+(define (test16) (simplify '(* 2 (- t1 t2 ))))
+(define (result16) '(- (* 2 t1 ) (* 2 t2)))
+(define (ptest16) (if (equal? (test16) (result16)) (display "Test16: Passed\n") (display "Test16: Failed\n")))
 
-(define (test17) (simplify '(* (+ t1 t2 ) t3)
-(define (result17) '(+ (* t1 t3) (* t2 t3))
-(define (ptest17) (if (equal? (test17) (result17) (display "Test17: Passed\n") (display "Test17: Failed\n")))
+(define (test17) (simplify '(* (+ t1 t2 ) t3)))
+(define (result17) '(+ (* t1 t3) (* t2 t3)))
+(define (ptest17) (if (equal? (test17) (result17)) (display "Test17: Passed\n") (display "Test17: Failed\n")))
 
-(define (test18) (simplify '(* t1 (+ t2 t3))
-(define (result18) '(+ (* t1 t2) (* t1 t3))
-(define (ptest18) (if (equal? (test18) (result18) (display "Test18: Passed\n") (display "Test18: Failed\n")))
+(define (test18) (simplify '(* t1 (+ t2 t3))))
+(define (result18) '(+ (* t1 t2) (* t1 t3)))
+(define (ptest18) (if (equal? (test18) (result18)) (display "Test18: Passed\n") (display "Test18: Failed\n")))
 
-(define (test19) (simplify '(* (− t 1 t 2 ) t 3 )
-(define (result19) '(− (* t1 t3 ) (* t2 t3 ))
-(define (ptest19) (if (equal? (test19) (result19) (display "Test19: Passed\n") (display "Test19: Failed\n")))
+(define (test19) (simplify '(* (- t 1 t2 )t3 )))
+(define (result19) '(- (* t1 t3 ) (* t2 t3 )))
+(define (ptest19) (if (equal? (test19) (result19)) (display "Test19: Passed\n") (display "Test19: Failed\n")))
 
-(define (test20) (simplify '(* t1(− t2 t3)  )
-(define (result20) '(− (* t1 t2) (* t1 t3 ))
-(define (ptest20) (if (equal? (test20) (result20) (display "Test20: Passed\n") (display "Test20: Failed\n")))
+(define (test20) (simplify '(* t1(- t2 t3))))
+(define (result20) '(- (* t1 t2) (* t1 t3 )))
+(define (ptest20) (if (equal? (test20) (result20)) (display "Test20: Passed\n") (display "Test20: Failed\n")))
