@@ -105,7 +105,6 @@
 (define (result6a) '(+ -3 (* 2 v) ))
 (define (ptest6a) (if (equal? (test6a) (result6a)) (display "Test6a: Passed\n") (display "Test6a: Failed\n")))
 
-
 (define (test7) (simplify '(+ v (+ x z) )))
 (define (result7) '(+ (+ v x) z))
 (define (ptest7) (if (equal? (test7) (result7)) (display "Test7: Passed\n") (display "Test7: Failed\n")))
@@ -117,7 +116,6 @@
 (define (test7c) (simplify '(+ t1 (+ t2 t3))))
 (define (result7c) '(+ (+ t1 t2) t3) )
 (define (ptest7c) (if (equal? (test7c) (result7c)) (display "Test7c: Passed\n") (display "Test7c: Failed\n")))
-
 
 (define (test8) (simplify '(* t1 ( * t2 t3))))
 (define (result8) '(* (* t1 t2) t3) )
