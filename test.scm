@@ -134,7 +134,7 @@
 
 
 (define (test10) (simplify '(* ( * 1 t) 2))) ;=> (∗ (∗  1  2 ) t)
-(define (result10) '(∗ (∗  1  2 ) t)
+(define (result10) '(* (*  1  2 ) t)
 (define (ptest10) (if (equal? (test10) (result10)) (display "Test10: Passed\n") (display "Test10: Failed\n")))
 
 
@@ -144,7 +144,7 @@
 
 
 (define (test11a) (simplify '(* (- v 2) (- 1 3) )))
-(define (result11a) '( 4 (* -2 v))) ;(+ (∗ c 1 c 2 ) (∗ c 2 t))
+(define (result11a) '( 4 (* -2 v)))
 (define (ptest11a) (if (equal? (test12) (result12)) (display "test11a: Passed\n") (display "test11a: Failed\n")))
 
 
@@ -152,7 +152,7 @@
 (define (result12) '(+ (* 1 2) (* 1 t))
 (define (ptest12) (if (equal? (test12) (result12)) (display "Test12: Passed\n") (display "Test12: Failed\n")))
 
-(define (test13) (simplify '(* (+ t1 t2 ) 2))) ;→ (+ (* 2 t1 ) (* 2 t2 ))
+(define (test13) (simplify '(* (+ t1 t2 ) 2))) 
 (define (result13) '(+ (* 2 t1 ) (* 2 t2))
 (define (ptest13) (if (equal? (test13) (result13) (display "Test13: Passed\n") (display "Test13: Failed\n")))
 
