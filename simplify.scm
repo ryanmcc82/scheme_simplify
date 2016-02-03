@@ -39,6 +39,12 @@
           )
           (else ; all vars and s-exp aka cases 7,8, 17-20
               (cond
+                  ((and (sum? operator)(sum? op2sExOp))
+                    (evalRearange1 operator op1s op2s)
+                  )
+                  ((and (mul? operator)(mul? op2sExOp))
+                    (evalRearange1 operator op1s op2s)
+                  )
 
                   (else  (list operator op1s op2s));default output
               )
@@ -59,6 +65,10 @@
 
 (define (negate x)(* -1 x))
 
+(define (lastT ex) (cadr (cdr ex)))
+
+(define (evalRearange1 op t1 ex)(list op (list t1 (cadr ex )) (lastT ex) ))
+
 
 (define (state-print operator op1s op2s oprIsMul op1sExOp op2sExOp)
   (begin
@@ -66,7 +76,7 @@
     (display (list operator op1s op2s))
     (newline)
     (display (string-append "\t\t" "vars: oprIsMul:" (write-to-string oprIsMul)
-	
+
       " op1sExOp:" (write-to-string op1sExOp)
       " op2sExOp: " (write-to-string op2sExOp) ))
       (newline)
