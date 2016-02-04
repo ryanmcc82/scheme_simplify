@@ -29,23 +29,28 @@
                     (else (simplify_minus (list operator op1s op2s))) ;(op constat var) => return as is
                     )
                   )
-          ((or op1isNum op2isNum); one constant and one var/s-exp aka rules 9 -16 + 2,4,6 b's
-              (cond(false);TODO rules 9-16
-
-              (op2isNum ; else (var con) in cases 2,4,6 b's
-                  (simplify_minus (list operator op2s op1s))
-              )
-              (else  (list operator op1s op2s)));default output
-          )
-          (else ; all vars and s-exp aka cases 7,8, 17-20
+          (else ;(or op1isNum op2isNum); one constant and one var/s-exp aka rules 9 -16 + 2,4,6 b's
               (cond
-                  ((and (sum? operator)(sum? op2sExOp))
-                    (evalRearange1 operator op1s op2s)
+                  (op2isNum ; else (var con) in cases 2,4,6 b's
+                      (simplify (simplify_minus (list operator op2s op1s)))
                   )
-                  ((and (mul? operator)(mul? op2sExOp))
-                    (evalRearange1 operator op1s op2s)
+                  ((and (sum? operator)(sum? op2sExOp)); rule 7
+                      (simplify (evalRearange1 operator op1s op2s))
+                  )
+                  ((or (sum? operator)(minus? operator))(list operator op1s op2s)) ;all following rules operator = *
+                  ((mul? op2sExOp); rule 8; and 10 after 4b
+                      (simplify (evalRearange1 operator op1s op2s)); TODO does this need to be surround by a recursive call to simplify?
                   )
 
+                  ((sum? op2sExOp);rule 11 and 12 after 4b
+                      (simplify (termMulDistributTS operator op1s op2s op2sExOp))
+                  )
+                  ((and(mul? operator)(or (sum? op1sExOp)(minus? op1sExOp)) )
+                      (simplify (termMulDistributST operator op1s op2s op1sExOp))
+                  )
+                  ((and(mul? operator)(not (not op2sExOp) )); not not returns true for - and + but not vars or numbers
+                      (simplify (termMulDistributTS operator op1s op2s op2sExOp)) ;don't need to worry bout op2sExOp being *; caught by rule 8
+                  )
                   (else  (list operator op1s op2s));default output
               )
           )
@@ -61,14 +66,41 @@
 (define (mul? x)
   (eq?  x '*))
 
-(define (simplify_minus ex) (if (eq? (car ex) '-) (list '+ (negate (cadr ex)) (cadr (cdr ex))) ex))
+  (define (minus? x) (eq? x '-))
+
+(define (simplify_minus ex) (if (eq? (car ex) '-) (list '+ (negate (cadr ex)) (caddr ex)) ex))
 
 (define (negate x)(* -1 x))
 
 (define (lastT ex) (cadr (cdr ex)))
 
-(define (evalRearange1 op t1 ex)(list op (list t1 (cadr ex )) (lastT ex) ))
+(define (evalRearange1 op t1 ex)(list op (list op t1 (cadr ex )) (caddr ex) ))
 
+(define (termMulDistributTS op T1 ex exOp) (list exOp (list op t1 (cadr ex)) (list op t1 (caddr ex))))
+
+(define (termMulDistributST op ex t3 exOp) (list exOp (list op (cadr ex) t3 ) (list op (caddr ex) t3 )))
+
+(define (atom? x); TODO we may need a better method for this
+ (and (not (list? x))
+	(not (null? x))
+	)
+)
+
+;I think we can return false or the operand from "op-not-atom" and avoid a second test.
+(define (op-not-atom x)
+  (if (atom? x) #f
+    (car x)
+  )
+)
+
+(define (opr-is-mul x)
+	(if (or (eq? x *)(eq? x '*)) #t #f)
+)
+
+(define (opr-is-plus x)
+	(if (or (eq? x + )(eq? x '+)) #t #f)
+
+)
 
 (define (state-print operator op1s op2s oprIsMul op1sExOp op2sExOp)
   (begin
@@ -89,9 +121,9 @@
 (define (loadf)
 	(begin
 	(load "simplify.scm")
-	(load "atom?.scm")
-	(load "op-not-atom.scm")
-	(load "opr-is-mul.scm")
-	(load "opr-is-plus.scm")
+	;(load "atom?.scm")
+	;(load "op-not-atom.scm")
+	;(load "opr-is-mul.scm")
+	;(load "opr-is-plus.scm")
 	(load "test.scm")
 ))
