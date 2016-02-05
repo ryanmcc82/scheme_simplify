@@ -23,6 +23,10 @@
                     ((and (not op1isNum) (not op2isNum)) ;(op var var) => return as is
                         (list operator op1s op2s)
                     )
+                    ((nutralElimination? operator op1s op2s) )
+                    ;((and (or (eq? op1s 0)(eq? op2s 0)) (mul? operator)) 0)
+                    ;((or (and (eq? op1s 1) (mul? operator))(and (eq? op1s 0) (or (sum? operator)(minus? operator)))) op2s)
+                    ;((or (and (eq? op2s 1) (mul? operator))(and (eq? op2s 0) (or (sum? operator)(minus? operator)))) op1s)
                     ( op2isNum ;(op var constant) => swap operands
                         (simplify_minus (list operator op2s op1s))
                     )
@@ -35,7 +39,7 @@
                       (simplify (simplify_minus (list operator op2s op1s)))
                   )
                   ((and (eq? op1s 0) (mul? operator)) 0);if multiplied by zero return zero
-                  ((or (and (eq? op1s 1) (mul? operator))(and (eq? op1s 0) (sum? operator))) op2s)
+                  ((or (and (eq? op1s 1) (mul? operator))(and (eq? op1s 0) (or (sum? operator)(minus? operator)))) op2s)
                   ((and (sum? operator)(sum? op2sExOp)); rule 7
                       (simplify (evalRearange1 operator op1s op2s))
                   )
@@ -64,7 +68,6 @@
 (define (sum? x)
   (eq?  x '+))
 
-
 (define (mul? x)
   (eq?  x '*))
 
@@ -81,6 +84,13 @@
 (define (termMulDistributTS op T1 ex exOp) (list exOp (list op t1 (cadr ex)) (list op t1 (caddr ex))))
 
 (define (termMulDistributST op ex t3 exOp) (list exOp (list op (cadr ex) t3 ) (list op (caddr ex) t3 )))
+
+(define (nutralElimination? op op1s op2s)(
+    cond((and (or (eq? op1s 0)(eq? op2s 0)) (mul? op)) 0)
+    ((or (and (eq? op1s 1) (mul? op))(and (eq? op1s 0) (or (sum? op)(minus? op)))) op2s)
+    ((or (and (eq? op2s 1) (mul? op))(and (eq? op2s 0) (or (sum? op)(minus? op)))) op1s)
+    (else #f)
+    ))
 
 (define (atom? x); TODO we may need a better method for this
  (and (not (list? x))

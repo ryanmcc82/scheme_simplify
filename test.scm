@@ -56,6 +56,9 @@
   (begin
       (display "Test Results:\n")
     (ptest0)
+    (ptest0a)
+    (ptest0b)
+    (ptest0c)
     (ptest1)
     (ptest2)
     (ptest2a)
@@ -90,6 +93,18 @@
 (define (test0) (simplify '1))
 (define (result0) 1)
 (define (ptest0) (if (equal? (test0) (result0)) (display "Test0: Passed\n") (display "Test0: Failed\n")))
+
+(define (test0a) (simplify '(* v 1)))
+(define (result0a) 'v)
+(define (ptest0a) (if (equal? (test0a) (result0a)) (display "Test0a: Passed\n") (display "Test0a: Failed\n")))
+
+(define (test0b) (simplify '(* v 0)))
+(define (result0b) 0)
+(define (ptest0b) (if (equal? (test0b) (result0b)) (display "Test0b: Passed\n") (display "Test0b: Failed\n")))
+
+(define (test0c) (simplify '(+ v 0)))
+(define (result0c) 'v)
+(define (ptest0c) (if (equal? (test0c) (result0c)) (display "Test0c: Passed\n") (display "Test0c: Failed\n")))
 
 (define (test1) (simplify '(+ 1 3)))
 (define (result1) 4)
