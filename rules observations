@@ -10,10 +10,10 @@
 (∗ (∗ c 1 t) c 2 ) → (∗ (∗ c 1 c 2 ) t)                 (10)        * ex con       * con ex
 (∗ (+ c 1 t) c 2 ) → (+ (∗ c 1 c 2 ) (∗ c 2 t))         (11)        * ex con       + con ex
 (∗ c 1 (+ c 2 t)) → (+ (∗ c 1 c 2 ) (∗ c 1 t))          (12)        * con ex       + con ex
-(∗ (+ t 1 t 2 ) c) → (+ (∗ c t 1 ) (∗ c t 2 ))          (13)        * ex con
-(∗ c (+ t 1 t 2 )) → (+ (∗ c t 1 ) (∗ c t 2 ))          (14)        * con ex
-(∗ (− t 1 t 2 ) c) → (− (∗ c t 1 ) (∗ c t 2 ))          (15)        * con ex
-(∗ c (− t 1 t 2 )) → (− (∗ c t 1 ) (∗ c t 2 ))          (16)        * con ex
+(∗ (+ t 1 t 2 ) c) → (+ (∗ c t 1 ) (∗ c t 2 ))          (13)        * ex con       + ex  ex //
+(∗ c (+ t 1 t 2 )) → (+ (∗ c t 1 ) (∗ c t 2 ))          (14)        * con ex       + ex  ex //same as 13 with position switch
+(∗ (− t 1 t 2 ) c) → (− (∗ c t 1 ) (∗ c t 2 ))          (15)        * ex con       - ex  ex //
+(∗ c (− t 1 t 2 )) → (− (∗ c t 1 ) (∗ c t 2 ))          (16)        * con ex       - ex  ex //
 (∗ (+ t 1 t 2 ) t 3 ) → (+ (∗ t 1 t 3 ) (∗ t 2 t 3 ))   (17)        * ex trm
 (∗ t 1 (+ t 2 t 3 )) → (+ (∗ t 1 t 2 ) (∗ t 1 t 3 ))    (18)        * trm ex
 (∗ (− t 1 t 2 ) t 3 ) → (− (∗ t 1 t 3 ) (∗ t 2 t 3 ))   (19)        * ex trm
