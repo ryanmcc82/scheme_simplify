@@ -1,9 +1,12 @@
 # scheme_simplify
 An algebraic simplification method.
-Note on opening scheme
+Note:Launch scheme in folder containing "simplify.scm" and "test.scm"
+
 Call
 => (load "simplify.scm")
+//to load test call (loadf)
 => (loadf)
+//To run pass fail tests call (ptest)
 
 after the first (load "simplify.scm")
 future changes can be loaded by calling (loadf)
