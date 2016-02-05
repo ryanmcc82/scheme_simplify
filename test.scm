@@ -1,21 +1,33 @@
 (define (test)
   (begin
-    (display "test0: (simplify '1) \n")
+    (display "test0: (simplify '1) \nResult: ")
     (display (test0) )
+    (newline)
+    (ptest0)
 
     (newline)
-    (display "test1: simplify '(+ 1 3)\n")
+    (display "test1: simplify '(+ 1 3)\nResult: ")
     (display (test1) )
-
-    (display "test2a: (simplify '(+ 1 v))\n")
-    (display (test2a) )
-
-    (display "test2: (simplify '(+ v 1))\n")
-    (display (test2) )
+    (newline)
+    (ptest0)
 
     (newline)
-    (display "test4: (simplify '(+ (+ 2 v) (+ 1 3) ))\n")
+    (display "test2a: (simplify '(+ 1 v))\nResult: ")
+    (display (test2a) )
+    (newline)
+    (ptest2a)
+
+    (newline)
+    (display "test2: (simplify '(+ v 1))\nResult: ")
+    (display (test2) )
+    (newline)
+    (ptest2)
+
+    (newline)
+    (display "test4: (simplify '(+ (+ 2 v) (+ 1 3) ))\nResult: ")
     (display (test4) )
+    (newline)
+    (ptest4)
 
     (newline)
     (display "test5: (simplify '(+ (+ v 2) (+ 1 3) ))\n")
@@ -62,6 +74,7 @@
     (ptest11)
     (ptest11a)
     (ptest12)
+    (ptest12a)
     (ptest13)
     (ptest14)
     (ptest15)
@@ -144,8 +157,8 @@
 (define (ptest9) (if (equal? (test9) (result9)) (display "Test9: Passed\n") (display "Test9: Failed\n")))
 
 
-(define (test10) (simplify '(* ( * 1 t) 2))) ;=> (* (*  1  2 ) t)
-(define (result10) '(* 2 t))
+(define (test10) (simplify '(* ( * 3 t) 2))) ;=> (* (*  1  2 ) t)
+(define (result10) '(* 6 t))
 (define (ptest10) (if (equal? (test10) (result10)) (display "Test10: Passed\n") (display "Test10: Failed\n")))
 
 
@@ -156,12 +169,16 @@
 
 (define (test11a) (simplify '(* (- v 2) (- 1 3) )))
 (define (result11a) '(+ 4 (* -2 v)))
-(define (ptest11a) (if (equal? (test12) (result12)) (display "test11a: Passed\n") (display "test11a: Failed\n")))
+(define (ptest11a) (if (equal? (test11a) (result11a)) (display "test11a: Passed\n") (display "test11a: Failed\n")))
 
 
-(define (test12) (simplify '(* 1 (+ 2 t))))
-(define (result12) '(+ 2 (* 1 t)))
+(define (test12) (simplify '(* 3 (+ 2 t))))
+(define (result12) '(+ 6 (* 3 t)))
 (define (ptest12) (if (equal? (test12) (result12)) (display "Test12: Passed\n") (display "Test12: Failed\n")))
+
+(define (test12a) (simplify '(* 1 (+ 2 t))))
+(define (result12a) '(+ 2 t))
+(define (ptest12a) (if (equal? (test12a) (result12a)) (display "Test12a: Passed\n") (display "Test12a: Failed\n")))
 
 (define (test13) (simplify '(* (+ t1 t2 ) 2)))
 (define (result13) '(+ (* 2 t1 ) (* 2 t2)))

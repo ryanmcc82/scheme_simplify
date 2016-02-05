@@ -7,13 +7,13 @@
     ;else
     (let* ((operator (car x)) (op1s (simplify (cadr x ))) (op2s (simplify (cadr (cdr x))))
       (op1sExOp (op-not-atom op1s)) (op2sExOp (op-not-atom op2s)) (oprIsMul (opr-is-mul operator))
-      (oprIsPlus (opr-is-plus operator))(op1isNum (number? op1s))(op2isNum (number? op2s))
+      (op1isNum (number? op1s))(op2isNum (number? op2s))
       ;Note if these vars are only used once we can remove from "let" also
       ;I think we can return false or the operand from "op-not-atom" and avoid a second test.
       )
       ;(state-print operator op1s op2s oprIsMul op1sExOp op2sExOp);TODO REMOVE
-      (cond ((and (not op1sExOp) (not op2sExOp));All atoms
-                (cond((and op1isNum op2isNum)
+      (cond ((and (not op1sExOp) (not op2sExOp));All atoms NOTE not most efficient way to do this but a little late to change
+                (cond((and op1isNum op2isNum); could have just done this test aka both operands are numbers -> do operation
                         ;(display operator);TODO REMOVE
                         ;(display "_");TODO REMOVE
                         ;(display op2s);TODO REMOVE
@@ -34,6 +34,8 @@
                   (op2isNum ; else (var con) in cases 2,4,6 b's
                       (simplify (simplify_minus (list operator op2s op1s)))
                   )
+                  ((and (eq? op1s 0) (mul? operator)) 0);if multiplied by zero return zero
+                  ((or (and (eq? op1s 1) (mul? operator))(and (eq? op1s 0) (sum? operator))) op2s)
                   ((and (sum? operator)(sum? op2sExOp)); rule 7
                       (simplify (evalRearange1 operator op1s op2s))
                   )
@@ -121,9 +123,9 @@
 (define (loadf)
 	(begin
 	(load "simplify.scm")
-	;(load "atom?.scm")
-	;(load "op-not-atom.scm")
-	;(load "opr-is-mul.scm")
-	;(load "opr-is-plus.scm")
+	;(load "atom?.scm"); completed and moved to "simplify.scm"
+	;(load "op-not-atom.scm"); completed and moved to "simplify.scm"
+	;(load "opr-is-mul.scm"); completed and moved to "simplify.scm"
+	;(load "opr-is-plus.scm"); completed and moved to "simplify.scm"
 	(load "test.scm")
 ))
